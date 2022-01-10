@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}title: Книги{% endblock %}
+{% block header %}Книги
+    {% if genre %}
+        жанра <a href="{% url 'books_by_genre' genre_id=genre.id %}">{{ genre.name }}</a>
+    {% elif author %}
+        автора <a href="{% url 'books_by_author' author_id=author.id %}">{{ author.first_name }} {{ author.last_name }}</a>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% for book in books %}
+        <div>
+            <a href="{% url 'book' book_id=book.id %}"> {{ book.name }} </a>
+            {% if not genre %}
+                {% for genre in book.genres.all %}
+                    <a href="{% url 'books_by_genre' genre_id=genre.id %}">({{ genre.name }})</a>
+                {% endfor %}
+            {% endif %}
+            {% if not author %}
+                    <a href="{% url 'books_by_author' author_id=book.author.id %}">({{ book.author.first_name }} {{  book.author.last_name }})</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

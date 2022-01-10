@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}title: История запросов TG{% endblock %}
+{% block header %}История запросов TG{% endblock %}
+{% block content %}
+    <table>
+    {% for msg in history %}
+        <tr>
+            <td>{{ msg.tguser.first_name}}</td>
+            <td>{{ msg.tguser.last_name }}</td>
+            <td>{{ msg.date }}</td>
+            <td>{{ msg.text }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

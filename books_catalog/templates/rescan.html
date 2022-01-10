@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}title: Пересканировать библиотеку{% endblock %}
+{% block header %}Пересканировать библиотеку{% endblock %}
+{% block content %}
+    {% if status == -1 %}
+        <form method="post">
+            <input type="hidden" name="act" value="start">
+            {%  csrf_token  %}
+            <input type="submit" value="Начать рескан">
+        </form>
+    {% else %}
+        <div>Посканировано {{ status }} книгы</div>
+        <form method="post">
+            <input type="hidden" name="act" value="stop">
+            {%  csrf_token  %}
+            <input type="submit" value="Остановить скан">
+        </form>
+    {% endif %}
+
+{% endblock %}

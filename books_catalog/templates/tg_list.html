@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}title: Юзеры TG{% endblock %}
+{% block header %}Юзеры TG{% endblock %}
+{% block content %}
+    {% for user in users %}
+        <form method="post">
+            {% csrf_token %}
+                {{ user.userid }}
+                {{ user.first_name }}
+                {{ user.last_name }}
+                <input type="hidden" name="userid" value="{{ user.userid }}">
+                {% if user.allowed %}
+                    <input type="hidden" value="false" name="act">
+                    <input type="submit" value="Отключить">
+                {% else %}
+                    <input type="hidden" value="true" name="act">
+                    <input type="submit" value="Включить">
+                {% endif %}
+            </div>
+        </form>
+    {% endfor %}
+    <div>
+{% endblock %}

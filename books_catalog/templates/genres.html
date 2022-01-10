@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}title: Жанры{% endblock %}
+{% block header %}Жанры{% endblock %}
+{% block content %}
+    {% for genre in genres %}
+        <div>
+            <a href="{%  url 'books_by_genre' genre_id=genre.id %}">{{ genre.name }}</a><a href="{% url 'genre_delete' genre_id=genre.id %}">-</a>
+        </div>
+    {% endfor %}
+    <div>
+    <a href="{% url 'books' %}">All books</a>
+    </div>
+    <a href="{% url "genre_new" %}">new genre</a>
+{% endblock %}

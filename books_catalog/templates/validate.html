@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}title: validate new file{% endblock %}
+{% block header %}Валидация нового файла {% endblock %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+
+    <div>Book name: {{ data.title }}</div>
+    <div>First name: {{ data.first_name }}</div>
+    <div>Last name: {{ data.last_name }}</div>
+    <div>Year: {{ data.year }}</div>
+    <div>Description: {{ data.annotation }}</div>
+    <div>Path: {{ data.job.path }}</div>
+
+
+    <div>Genres:
+        {% for genre in data.genres %}
+            {{ genre }}
+        {% endfor %}
+    </div>
+    <input type="submit" value="OK"/>
+    </form>
+{% endblock %}

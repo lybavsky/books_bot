@@ -1,0 +1,18 @@
+<div>
+    Some header
+    <a href="{% url "upload" %}">Add new book</a>
+
+    <span>
+        status:
+        <div style="display: inline" id="scan_status_cont">updating</div>
+
+        <a href="{% url "authors" %}">Авторы</a>
+        <a href="{% url "genres" %}">Жанры</a>
+
+        <span style="float: right">
+            <a href="{% url "tg_history" %}">TG-история</a>
+            <a href="{% url "tg_list" %}">TG-юзеры</a>
+        </span>
+
+    </span>
+</div>

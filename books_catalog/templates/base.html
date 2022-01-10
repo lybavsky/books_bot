@@ -1,0 +1,27 @@
+<html>
+<head>
+    {% load static %}
+    <title>
+        {% block title %}
+            Base page
+        {% endblock %}
+    </title>
+    <script src="{% static "main.js" %}"></script>
+</head>
+<body>
+{% include "parts/header.html" %}
+
+<div>
+    {% block header %}Base page header{% endblock %}
+</div>
+<div>
+    {% block content %}
+        Base content
+    {% endblock %}
+
+</div>
+<div>
+    {% include "parts/footer.html" %}
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+django>=3.0,<4.0
+psycopg2>=2.8
+aiohttp~=3.8
+aiogram~=2.18
+django-environ~=0.8
+elasticsearch>=7.14
+uvicorn>=0.16

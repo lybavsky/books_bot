@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}title: Книги{% endblock %}
+{% block header %}Книга {{ book.title }}{% endblock %}
+{% block content %}
+    <div>Book name: {{ book.name }}</div>
+    <div>First name: {{ book.author.first_name }}</div>
+    <div>Last name: {{ book.author.last_name }}</div>
+    <div>Year: {{ book.year }}</div>
+    {% for fb2file in fb2file_set %}
+        <div>
+            <hr>
+            <div>Description: {{ book.description }}</div>
+            <img src="{% url 'cover' cover_id=fb2file.id %}">
+            <div><a href="{% url 'book_download' book_id=fb2file.id %}">Download</a></div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

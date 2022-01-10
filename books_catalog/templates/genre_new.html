@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}title: Новый жанр{% endblock %}
+{% block header %}Новый жанр{% endblock %}
+{% block content %}
+    Новый жанр
+    <form action="{% url "genre_new" %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="genre" placeholder="new genre name">
+        <input type="submit">
+    </form>
+{% endblock %}

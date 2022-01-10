@@ -1,0 +1,32 @@
+---
+version: "3"
+services:
+  parser:
+    container_name: books
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - 127.0.0.1:8001:8000
+    environment:
+      TG_TOKEN: PLACE_FOR_TG_TOKEN
+      ES_HOST: es
+    volumes:
+      - /data_dir:/data
+      - /books:/books
+    depends_on:
+      - es
+  es:
+    container_name: es
+    image: elasticsearch:7.16.2
+    ports:
+    - 9200
+    - 9300
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms4096m -Xmx4096m"
+    healthcheck:
+      test: curl -s http://es:9200 >/dev/null || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 50

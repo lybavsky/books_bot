@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}title: Авторы{% endblock %}
+{% block header %}Авторы{% endblock %}
+{% block content %}
+
+    {% for author in authors %}
+        <div>
+            <a href="{% url 'books_by_author' author_id=author.id %}">{{ author.last_name }} {{ author.first_name }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}
